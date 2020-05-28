@@ -2,7 +2,13 @@ const fs = require("fs");
 const Player = require("./Player");
 const Team = require("./Team");
 const { getHexFromRom } = require("./Utils");
-const { TEAMS_LENGTH, OFFSET_INDEX } = require("./Config");
+const {
+  TEAMS_LENGTH,
+  OFFSET_INDEX,
+  TEAM_PLAYERS_LENGTH,
+  TEAM_PLAYER_NAME_HEX_LENGTH,
+  TEAM_PLAYER_ATTRIBUTES_HEX_LENGTH,
+} = require("./Config");
 
 class Rom {
   constructor({ romPath }) {
@@ -34,22 +40,37 @@ class Rom {
     this.teams = new Array(TEAMS_LENGTH).fill("").map((team, index) => {
       let players = [];
       for (
-        let nameIndex = OFFSET_INDEX.players.name.start + index * 160,
-          attributesIndex = OFFSET_INDEX.players.attributes.start + index * 140;
-        nameIndex < OFFSET_INDEX.players.name.end + index * 160;
-        nameIndex += 8, attributesIndex += 7
+        let nameIndex =
+            OFFSET_INDEX.players.name.start +
+            index * TEAM_PLAYERS_LENGTH * TEAM_PLAYER_NAME_HEX_LENGTH,
+          attributesIndex =
+            OFFSET_INDEX.players.attributes.start +
+            index * TEAM_PLAYERS_LENGTH * TEAM_PLAYER_ATTRIBUTES_HEX_LENGTH;
+        nameIndex <
+        OFFSET_INDEX.players.name.end +
+          index * TEAM_PLAYERS_LENGTH * TEAM_PLAYER_NAME_HEX_LENGTH;
+        nameIndex += TEAM_PLAYER_NAME_HEX_LENGTH,
+          attributesIndex += TEAM_PLAYER_ATTRIBUTES_HEX_LENGTH
       ) {
         const player = new Player()
-          .setHexName(getHexFromRom(this.rom, nameIndex, 8))
-          .setHexAttributes(getHexFromRom(this.rom, attributesIndex, 7))
+          .setHexName(
+            getHexFromRom(this.rom, nameIndex, TEAM_PLAYER_NAME_HEX_LENGTH)
+          )
+          .setHexAttributes(
+            getHexFromRom(
+              this.rom,
+              attributesIndex,
+              TEAM_PLAYER_ATTRIBUTES_HEX_LENGTH
+            )
+          )
           .setMetaData({
             name: {
               start: nameIndex,
-              end: nameIndex + 8,
+              end: nameIndex + TEAM_PLAYER_NAME_HEX_LENGTH,
             },
             attributes: {
               start: attributesIndex,
-              end: attributesIndex + 7,
+              end: attributesIndex + TEAM_PLAYER_ATTRIBUTES_HEX_LENGTH,
             },
           });
         players.push(player);
