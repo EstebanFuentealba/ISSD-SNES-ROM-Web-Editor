@@ -33,7 +33,8 @@ class Player {
   };
   setName = (value) => {
     if (value.length > 8) throw new Error("Max length is 8");
-    this.hexName = parseStringToHex(value);
+    if (value.length < 1) throw new Error("Min length is 1");
+    this.hexName = parseStringToHex(value.padEnd(8, "."));
     return this;
   };
   getAttributes = () => {
@@ -75,6 +76,9 @@ class Player {
       energy: parseInt(energy) + 1,
       no: numbers[`${no1}${no2}`.toUpperCase()],
       skin: parseInt(skin),
+      /**
+       * 1-13
+       */
       hair: hairs[hair],
     };
   };
