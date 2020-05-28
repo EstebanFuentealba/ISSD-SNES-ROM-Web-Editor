@@ -5,7 +5,7 @@ const { getHexFromRom } = require("./Utils");
 const { TEAMS_LENGTH, OFFSET_INDEX } = require("./Config");
 
 class Rom {
-  constructor({ romPath, dictionaries: { hairs, letters, numbers, speeds } }) {
+  constructor({ romPath }) {
     this.romPath = romPath;
     if (!this.romPath) throw new Error("no rom path");
     this.rom = fs.readFileSync(this.romPath);

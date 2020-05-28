@@ -3,7 +3,6 @@ const Rom = require("./Rom");
 
 const rom = new Rom({
   romPath: `${__dirname}/../rom/fecic.1.smc`,
-  dictionaries: Dictionaries,
 });
 //  read ROM
 const { teams } = rom.read();
