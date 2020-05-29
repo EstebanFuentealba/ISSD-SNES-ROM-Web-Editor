@@ -10,20 +10,19 @@ International Superstar Soccer Deluxe Rom Editor Web
 ## TODO
 
 - [x] Cambiar **nombre** de jugadores
-- [x] Cambiar **aceleración**
-- [x] Cambiar **velocidad**
-- [x] Cambiar **potencia de disparo**
-- [x] Cambiar **habilidad**
-- [x] Cambiar **equilibrio**
-- [x] Cambiar **inteligencia**
-- [x] Cambiar **dribleo**
-- [x] Cambiar **salto**
-- [x] Cambiar **salto**
-- [x] Cambiar **posición**
-- [x] Cambiar **energía**
-- [x] Cambiar **número de jugador**
-- [x] Cambiar **piel**
-- [x] Cambiar **tipo de cabello**
+- [x] Cambiar **aceleración** de jugadores
+- [x] Cambiar **velocidad** de jugadores
+- [x] Cambiar **potencia de disparo** de jugadores
+- [x] Cambiar **habilidad** de jugadores
+- [x] Cambiar **equilibrio** de jugadores
+- [x] Cambiar **inteligencia** de jugadores
+- [x] Cambiar **dribleo** de jugadores
+- [x] Cambiar **salto** de jugadores
+- [x] Cambiar **posición** de jugadores
+- [x] Cambiar **energía** de jugadores
+- [x] Cambiar **número de jugador** de jugadores
+- [x] Cambiar **tipo de piel** de jugadores
+- [x] Cambiar **tipo de cabello** de jugadores
 - [ ] Cambiar uniforme primario camiseta
 - [ ] Cambiar uniforme primario pantalón
 - [ ] Cambiar uniforme primario calcetas
