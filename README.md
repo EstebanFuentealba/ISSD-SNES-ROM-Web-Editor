@@ -43,3 +43,5 @@ International Superstar Soccer Deluxe Rom Editor Web
 - [ ] Cambiar color de pelo de jugador
 - [ ] Cambiar color de piel de jugador
 - [ ] Cambiar color de calzado de jugador
+
+- [ ] FrontEnd
