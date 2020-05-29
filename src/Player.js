@@ -94,7 +94,6 @@ class Player {
    * value Number 1-20
    */
   setNo = (value) => {
-    console.log(this.hexAttributes, value);
     this.hexAttributes = `${this.hexAttributes.substr(0, 10)}${
       keyToValue(numbers)[value]
     }${this.hexAttributes.substr(12)}`;
