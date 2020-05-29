@@ -2,6 +2,7 @@ const {
   parseHexToLetterWithDictionary,
   parseStringToHex,
   parseStringToBuffer,
+  keyToValue,
 } = require("./Utils");
 const { letters, numbers, hairs } = require("./Dictionary");
 
@@ -31,12 +32,85 @@ class Player {
   getNameBufferArray = () => {
     return parseStringToBuffer(this.hexName);
   };
+  getAttributesBufferArray = () => {
+    return parseStringToBuffer(this.hexAttributes);
+  };
   setName = (value) => {
     if (value.length > 8) throw new Error("Max length is 8");
     if (value.length < 1) throw new Error("Min length is 1");
     this.hexName = parseStringToHex(value.padEnd(8, "."));
     return this;
   };
+  setAcceleration = (value) => {
+    this.hexAttributes = `${value - 1}${this.hexAttributes.substr(1)}`;
+  };
+  setSpeed = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 1)}${
+      value - 1
+    }${this.hexAttributes.substr(2)}`;
+  };
+  setShotpower = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 2)}${
+      value - 1
+    }${this.hexAttributes.substr(3)}`;
+  };
+  setCurlskill = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 3)}${
+      value - 1
+    }${this.hexAttributes.substr(4)}`;
+  };
+  setBalance = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 4)}${
+      value - 1
+    }${this.hexAttributes.substr(5)}`;
+  };
+  setIntelligence = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 5)}${
+      value - 1
+    }${this.hexAttributes.substr(6)}`;
+  };
+  setDribling = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 6)}${
+      value - 1
+    }${this.hexAttributes.substr(7)}`;
+  };
+  setJump = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 7)}${
+      value - 1
+    }${this.hexAttributes.substr(8)}`;
+  };
+  setPosition = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(
+      0,
+      8
+    )}${value}${this.hexAttributes.substr(9)}`;
+  };
+  setEnergy = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 9)}${
+      value - 1
+    }${this.hexAttributes.substr(10)}`;
+  };
+  /**
+   * value Number 1-20
+   */
+  setNo = (value) => {
+    console.log(this.hexAttributes, value);
+    this.hexAttributes = `${this.hexAttributes.substr(0, 10)}${
+      keyToValue(numbers)[value]
+    }${this.hexAttributes.substr(12)}`;
+  };
+  setSkin = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(
+      0,
+      12
+    )}${value}${this.hexAttributes.substr(13)}`;
+  };
+  setHair = (value) => {
+    this.hexAttributes = `${this.hexAttributes.substr(0, 13)}${
+      keyToValue(hairs)[value]
+    }`;
+  };
+
   getAttributes = () => {
     const [
       acceleration,
@@ -61,8 +135,8 @@ class Player {
       curlskill: parseInt(curlskill) + 1,
       balance: parseInt(balance) + 1,
       intelligence: parseInt(intelligence) + 1,
-      dribling: parseInt(dribling) + 1,
       jump: parseInt(jump) + 1,
+      dribling: parseInt(dribling) + 1,
       /**
        * Posiciones:
        * 1 = Portero

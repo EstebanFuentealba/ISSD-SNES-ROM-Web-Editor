@@ -23,10 +23,17 @@ class Rom {
     this.rom.copy(temporalBuffer, 0, 0, this.rom.length);
     this.teams.map((team) => {
       team.getPlayers().map((player) => {
+        //  update name
         temporalBuffer = Buffer.concat([
           temporalBuffer.slice(0, player.getMeta().name.start),
           player.getNameBufferArray(),
           temporalBuffer.slice(player.getMeta().name.end),
+        ]);
+        //  update player attributes
+        temporalBuffer = Buffer.concat([
+          temporalBuffer.slice(0, player.getMeta().attributes.start),
+          player.getAttributesBufferArray(),
+          temporalBuffer.slice(player.getMeta().attributes.end),
         ]);
       });
     });

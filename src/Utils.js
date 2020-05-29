@@ -37,4 +37,5 @@ module.exports = {
   parseLetterToHexWithDictionary,
   parseStringToBuffer,
   parseStringToHex,
+  keyToValue,
 };
