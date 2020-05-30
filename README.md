@@ -7,6 +7,24 @@ International Superstar Soccer Deluxe Rom Editor Web
 - `npm install` or `yarn`
 - `npm run start` or `yarn start`
 
+## Example
+
+### Run command and Generate ROM
+
+<p align="center">
+<a target="_blank" href="https://www.youtube.com/watch?v=bl8ecd9F-XE&feature=github.com">
+  <img align="center" alt="Product: demo" src="https://media.giphy.com/media/Lk0em6aSXTXWW18UW6/giphy.gif" />
+  </a>
+</p>
+
+### Play Generated ROM in Emulator
+
+<p align="center">
+<a target="_blank" href="https://www.youtube.com/watch?v=mscNTOCYPis&feature=github.com">
+  <img align="center" alt="Product: demo" src="https://media.giphy.com/media/jn21kgcHg69XP2Ih7z/giphy.gif" />
+  </a>
+</p>
+
 ## TODO
 
 - [x] Cambiar **nombre** de jugadores

@@ -1,3 +1,4 @@
+const { spawn } = require("child_process");
 const Dictionaries = require("./Dictionary");
 const Rom = require("./Rom");
 const rom = new Rom({
@@ -47,3 +48,5 @@ console.log("after", {
 rom.write(`${__dirname}/../out/fecic.1_EDITED.smc`);
 
 console.log("🎉 Saved ROM!");
+
+spawn("open", ["-a", "OpenEmu", "./out/fecic.1_EDITED.smc"]);
