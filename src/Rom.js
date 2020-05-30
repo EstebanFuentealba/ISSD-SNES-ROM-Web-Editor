@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Player = require("./Player");
 const Team = require("./Team");
+const Texts = require("./Texts");
 const { getHexFromRom } = require("./Utils");
 const {
   TEAMS_LENGTH,
@@ -37,14 +38,48 @@ class Rom {
         ]);
       });
     });
+    temporalBuffer = Buffer.concat([
+      temporalBuffer.slice(0, OFFSET_INDEX.texts.friendlymatch.start),
+      this.texts.getFriendlymatchBufferArray(),
+      temporalBuffer.slice(OFFSET_INDEX.texts.friendlymatch.end),
+    ]);
+    temporalBuffer = Buffer.concat([
+      temporalBuffer.slice(
+        0,
+        OFFSET_INDEX.texts.friendlymatch_description.start
+      ),
+      this.texts.getFriendlymatchDescriptionBufferArray(),
+      temporalBuffer.slice(OFFSET_INDEX.texts.friendlymatch_description.end),
+    ]);
+
     fs.writeFileSync(filePath, temporalBuffer);
   }
   read() {
+    //  read texts
+    this.texts = new Texts()
+      .setHexFriendlymatch(
+        getHexFromRom(
+          this.rom,
+          OFFSET_INDEX.texts.friendlymatch.start,
+          OFFSET_INDEX.texts.friendlymatch.end -
+            OFFSET_INDEX.texts.friendlymatch.start
+        )
+      )
+      .setHexFriendlymatchDescription(
+        getHexFromRom(
+          this.rom,
+          OFFSET_INDEX.texts.friendlymatch_description.start,
+          OFFSET_INDEX.texts.friendlymatch_description.end -
+            OFFSET_INDEX.texts.friendlymatch_description.start
+        )
+      );
     // read team data
     //  TODO: implement read team name
     let teamName = "";
-    //  read players
     this.teams = new Array(TEAMS_LENGTH).fill("").map((team, index) => {
+      //  read shirt
+      //  TODO
+      //  read players
       let players = [];
       for (
         let nameIndex =
@@ -86,6 +121,7 @@ class Rom {
     });
     return {
       teams: this.teams,
+      texts: this.texts,
     };
   }
 }

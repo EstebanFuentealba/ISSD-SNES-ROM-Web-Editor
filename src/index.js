@@ -1,11 +1,10 @@
 const Dictionaries = require("./Dictionary");
 const Rom = require("./Rom");
-
 const rom = new Rom({
   romPath: `${__dirname}/../rom/fecic.1.smc`,
 });
-//  read ROM
-const { teams } = rom.read();
+// //  read ROM
+const { teams, texts } = rom.read();
 
 //  update player info
 //  Edit goalkeeper name of Cruzeiro
@@ -30,11 +29,13 @@ teams[0].getPlayers()[0].setNo(1);
 teams[0].getPlayers()[0].setSkin(0);
 teams[0].getPlayers()[0].setHair(0);
 
+texts.setFriendlymatch("AMISTOSO");
+texts.setFriendlymatchDescription("Solo amistoso");
+
 console.log("after", {
   name: teams[0].getPlayers()[0].getName(),
   attributes: teams[0].getPlayers()[0].getAttributes(),
 });
-
 //  write ROM
 rom.write(`${__dirname}/../out/fecic.1_EDITED.smc`);
 
