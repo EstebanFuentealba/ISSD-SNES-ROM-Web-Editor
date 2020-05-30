@@ -9,7 +9,9 @@ const strToHexArray = (value) => {
 const parseHexToLetterWithDictionary = (hex, dictionary) => {
   return strToHexArray(hex)
     .map((group) => dictionary[group.toString().toUpperCase()])
-    .join("");
+    .join("")
+    .replace(/\./g, " ")
+    .trim();
 };
 const keyToValue = (dictionary) =>
   Object.keys(dictionary).reduce((prev, hex) => {
@@ -23,6 +25,7 @@ const parseLetterToHexWithDictionary = (dictionary, letter) => {
 
 const parseStringToHex = (value) =>
   value
+    .replace(/ /g, ".")
     .split("")
     .map((letter) =>
       parseLetterToHexWithDictionary(Dictionaries.letters, letter)

@@ -12,7 +12,32 @@ const OFFSET_INDEX = {
     },
     friendlymatch_description: {
       start: 252985,
-      end: 252985 + 15,
+      end: 252985 + 16,
+    },
+
+    shortleague: {
+      start: 252953,
+      end: 252953 + 16,
+    },
+    shortleague_description: {
+      start: 253002,
+      end: 253002 + 31,
+    },
+    shorttournament: {
+      start: 252969,
+      end: 252969 + 16,
+    },
+    shorttournament_description: {
+      start: 253036,
+      end: 253036 + 31,
+    },
+    no_players: {
+      start: 248869,
+      end: 248869 + 16,
+    },
+    press: {
+      start: 248452,
+      end: 248452 + 6,
     },
   },
   team: {

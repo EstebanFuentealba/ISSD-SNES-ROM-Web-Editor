@@ -11,6 +11,7 @@ const { teams, texts } = rom.read();
 console.log("before", {
   name: teams[0].getPlayers()[0].getName(),
   attributes: teams[0].getPlayers()[0].getAttributes(),
+  texts: texts.toJSON(),
 });
 //  update name of first player
 teams[0].getPlayers()[0].setName("Coronavi");
@@ -31,10 +32,16 @@ teams[0].getPlayers()[0].setHair(0);
 
 texts.setFriendlymatch("AMISTOSO");
 texts.setFriendlymatchDescription("Solo amistoso");
+texts.setShortLeague("LIGA CORTA");
+texts.setShortLeagueDescription("Liga de seis     equipos");
+texts.setShortTournament("TORNEO CORTO");
+texts.setShortTournamentDescription("Torneo de ocho   equipos");
+texts.setPress("Apreta");
 
 console.log("after", {
   name: teams[0].getPlayers()[0].getName(),
   attributes: teams[0].getPlayers()[0].getAttributes(),
+  texts: texts.toJSON(),
 });
 //  write ROM
 rom.write(`${__dirname}/../out/fecic.1_EDITED.smc`);

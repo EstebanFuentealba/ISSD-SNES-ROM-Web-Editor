@@ -52,6 +52,36 @@ class Rom {
       temporalBuffer.slice(OFFSET_INDEX.texts.friendlymatch_description.end),
     ]);
 
+    temporalBuffer = Buffer.concat([
+      temporalBuffer.slice(0, OFFSET_INDEX.texts.shortleague.start),
+      this.texts.getShortLeagueBufferArray(),
+      temporalBuffer.slice(OFFSET_INDEX.texts.shortleague.end),
+    ]);
+    temporalBuffer = Buffer.concat([
+      temporalBuffer.slice(0, OFFSET_INDEX.texts.shortleague_description.start),
+      this.texts.getShortLeagueDescriptionBufferArray(),
+      temporalBuffer.slice(OFFSET_INDEX.texts.shortleague_description.end),
+    ]);
+
+    temporalBuffer = Buffer.concat([
+      temporalBuffer.slice(0, OFFSET_INDEX.texts.shorttournament.start),
+      this.texts.getShortTournamentBufferArray(),
+      temporalBuffer.slice(OFFSET_INDEX.texts.shorttournament.end),
+    ]);
+    temporalBuffer = Buffer.concat([
+      temporalBuffer.slice(
+        0,
+        OFFSET_INDEX.texts.shorttournament_description.start
+      ),
+      this.texts.getShortTournamentDescriptionBufferArray(),
+      temporalBuffer.slice(OFFSET_INDEX.texts.shorttournament_description.end),
+    ]);
+    temporalBuffer = Buffer.concat([
+      temporalBuffer.slice(0, OFFSET_INDEX.texts.press.start),
+      this.texts.getPressBufferArray(),
+      temporalBuffer.slice(OFFSET_INDEX.texts.press.end),
+    ]);
+
     fs.writeFileSync(filePath, temporalBuffer);
   }
   read() {
@@ -71,6 +101,45 @@ class Rom {
           OFFSET_INDEX.texts.friendlymatch_description.start,
           OFFSET_INDEX.texts.friendlymatch_description.end -
             OFFSET_INDEX.texts.friendlymatch_description.start
+        )
+      )
+      .setHexShortLeague(
+        getHexFromRom(
+          this.rom,
+          OFFSET_INDEX.texts.shortleague.start,
+          OFFSET_INDEX.texts.shortleague.end -
+            OFFSET_INDEX.texts.shortleague.start
+        )
+      )
+      .setHexShortLeagueDescription(
+        getHexFromRom(
+          this.rom,
+          OFFSET_INDEX.texts.shortleague_description.start,
+          OFFSET_INDEX.texts.shortleague_description.end -
+            OFFSET_INDEX.texts.shortleague_description.start
+        )
+      )
+      .setHexShortTournament(
+        getHexFromRom(
+          this.rom,
+          OFFSET_INDEX.texts.shorttournament.start,
+          OFFSET_INDEX.texts.shorttournament.end -
+            OFFSET_INDEX.texts.shorttournament.start
+        )
+      )
+      .setHexShortTournamentDescription(
+        getHexFromRom(
+          this.rom,
+          OFFSET_INDEX.texts.shorttournament_description.start,
+          OFFSET_INDEX.texts.shorttournament_description.end -
+            OFFSET_INDEX.texts.shorttournament_description.start
+        )
+      )
+      .setHexPress(
+        getHexFromRom(
+          this.rom,
+          OFFSET_INDEX.texts.press.start,
+          OFFSET_INDEX.texts.press.end - OFFSET_INDEX.texts.press.start
         )
       );
     // read team data
