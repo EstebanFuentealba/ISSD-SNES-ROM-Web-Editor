@@ -92,7 +92,7 @@ let byte1 = 0,
   byte18 = 0;
 let tileData = new Array(64).fill(0);
 let tile = [];
-// let squareCounter = 0;
+let squareCounter = 0;
 const starTileIndex = 0; //224822;
 let first = true;
 for (
@@ -151,8 +151,8 @@ for (
             tileData[ix]
           )})"></div>`
         );
-        if (counter == 6) {
-          tile.push(`<div class="row">${rows.reverse().join("")}</div>`);
+        if (counter == 7) {
+          tile.push(`<div class="row">${rows.reverse().join("\r\n")}</div>`);
           rows = [];
           counter = -1;
         }
@@ -181,8 +181,8 @@ for (
     //   tile
     // );
     count32BytesRead = 1;
-    // squareCounter++;
-    // if (squareCounter == 50) first = false;
+    squareCounter++;
+    // if (squareCounter == 1) first = false;
   }
 }
 
@@ -196,7 +196,7 @@ fs.writeFileSync(
 div {
     display: inline-block;
     height: 4px;
-    width:5px;
+    width:4px;
         }
         .row {
           display: flex;
@@ -207,7 +207,7 @@ div {
           width: 100%;
         }
 </style>
-${tile.map((square) => `<div class="square">${square}</div>`).join("")}
+${tile.join("\r\n")}
 </body>
 
 </html>
